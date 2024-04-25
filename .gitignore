@@ -1,0 +1,11 @@
+#deno cache
+.deno/
+
+#editor specifics
+.vscode/
+
+# node_modules
+node_modules/
+
+# build output
+dist/
