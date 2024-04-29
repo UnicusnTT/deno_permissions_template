@@ -1,12 +1,15 @@
-import { PermissionEnum } from './enum.ts';
-import handlePermissions from './permissionHandler.ts';
+import { TaskPermissions } from './taskPermissionInterface.ts';
+import { PermissionEnum } from './permissionEnum.ts';
 
-const denied = {
-	[PermissionEnum.Read]: [
-		'C:/',
-	],
+
+export const denied: TaskPermissions = {
+	'dev': {
+		[PermissionEnum.Read]: [
+			`./permissions`,
+		],
+		[PermissionEnum.Write]: [
+			`./permissions`,
+		],
+		[PermissionEnum.Hrtime]: [], //No arguments for this one!
+	},
 };
-
-const arg = Deno.args[0] as keyof typeof denied;
-
-handlePermissions(denied, arg);

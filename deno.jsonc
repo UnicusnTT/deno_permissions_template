@@ -1,11 +1,18 @@
 {
 	"tasks": {
-		/* Arguments to permissions/allowed and permissions/denied
-    must be in permissions/enum
-    @dev watches and runs src/main.ts,
-    allowing file read/write of current directory,
-    and net for github, deno.land & deno.com*/
-		"dev": "deno run --allow-net=$(deno run permissions/allowed.ts hosts) --allow-read=$(deno run permissions/allowed.ts read) --allow-write=$(deno run permissions/allowed.ts write) --watch src/main.ts"
+		/*
+		@getPermissions requires an argument in the style seen in task 'dev'.
+		*/
+		"getPermissions": "deno run --allow-read permissions/getPermissions.ts",
+		/*
+    	@dev watches and runs src/main.ts,
+		default getPermissions dev allows:
+		File read/write for /src directory,
+    	net for github, deno.land & deno.com
+		No file read/write to ./permissions
+		No hrtime permission.
+		*/
+		"dev": "deno run $(deno task getPermissions dev) --watch src/main.ts"
 	},
 	"lint": {
 		"include": ["src/", "permissions/*.ts"],

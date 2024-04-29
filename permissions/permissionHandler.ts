@@ -1,6 +1,7 @@
 export default function handlePermissions(
 	permissions: Record<string, string[]>,
 	arg: string,
+	deny?: true,
 ) {
 	try {
 		if (!arg) {
@@ -9,13 +10,23 @@ export default function handlePermissions(
 			);
 		}
 		if (arg in permissions) {
-			console.log(permissions[arg].join(','));
+			let permissionType: 'allow' | 'deny' = 'allow';
+			if (deny) permissionType = 'deny';
+			if (
+				permissions[arg].length == 0 ||
+				arg == 'hrtime' ||
+				arg == 'all'
+			) {
+				return `--${permissionType}-${arg}`
+			} else return `--${permissionType}-${arg}=${
+				permissions[arg].join(',')
+			}`;
 		} else {
 			throw new Error(
 				`Invalid argument '${arg}' is either lacking a list or not in the permission enum!`,
 			);
 		}
 	} catch (e) {
-		console.error(e);
+		throw e;
 	}
 }

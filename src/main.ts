@@ -5,10 +5,10 @@ console.log("We made it, here's the result!", result);
 
 const decoder = new TextDecoder();
 try {
-	const file = await Deno.readFile('hello1.txt');
+	const file = await Deno.readFile('./src/hello1.txt');
 	console.log(decoder.decode(file));
 } catch {
 	const encoder = new TextEncoder();
 	const data = encoder.encode('Hello world!');
-	await Deno.writeFile('hello1.txt', data, { create: true });
+	await Deno.writeFile('./src/hello1.txt', data);
 }
