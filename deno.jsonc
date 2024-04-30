@@ -3,7 +3,7 @@
 		/*
 		@getPermissions requires an argument in the style seen in task 'dev'.
 		*/
-		"getPermissions": "deno run --allow-read permissions/getPermissions.ts",
+		"getPermissions": "deno run permissions/getPermissions.ts",
 		/*
     	@dev watches and runs src/main.ts,
 		default getPermissions dev allows:
