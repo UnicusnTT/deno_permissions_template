@@ -16,7 +16,7 @@ The project consists of two main directories:
 
 - `allowed.ts`: Defines the allowed permissions for different tasks.
 - `denied.ts`: Defines the denied permissions for different tasks.
-- `permissionEnum.ts`: Enumerates the permission flags used in the project. As of 1.42.4 it includes all flags in the documentation.
+- `permissionEnum.ts`: Enumerates the permission flags used in the project. As of 1.42.4 it includes all flags in the Deno documentation.
 - `permissionHandler.ts`: Handles the logic for generating permission strings based on configurations.
 - `taskPermissionInterface.ts`: Defines the interface for task permissions.
 
@@ -35,10 +35,18 @@ The project consists of two main directories:
 
 ## Getting Started
 
+**If you build on the template:**
 1. Clone this repository.
 2. Install Deno if you haven't already: [Deno Installation Guide](https://deno.land/#installation). Review the [documentation](https://docs.deno.com/runtime/manual) if you need more detail.
 3. Run `deno task dev` to execute main.ts with default settings.
 4. Review deno.jsonc for additional instructions and details for default settings.
+
+**If you just want the functionality:**
+1. Copy the `permissions` subdirectory into your deno root directory.
+2. Add the getPermissions task to `deno.json` or `deno.jsonc`.
+3. Edit `permissions/allowed.ts` and `permissions/denied.ts` so they match your tasks and permissions instead of the template.
+4. Replace permission flags in your tasks with `$(deno task getPermissions <task>)`. You're now using the permissions directory correctly!
+5. You might want to put this `README.md` in your copy of the`permissions` directory.
 
 ## Adding new tasks/permissions
 1. Add your new task name to the object in `permissions/allowed.ts` as a key. Optionally include it in `permissions/denied.ts` as well.
