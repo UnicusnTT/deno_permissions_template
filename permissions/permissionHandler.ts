@@ -11,7 +11,10 @@ export default function handlePermissions(
 		}
 		if (arg in permissions) {
 			let permissionType: 'allow' | 'deny' = 'allow';
-			if (deny) permissionType = 'deny';
+			if (deny) {
+                permissionType = 'deny';
+                if (permissions[arg] === undefined) return '';
+            }
 			if (
 				permissions[arg].length == 0 ||
 				arg == 'hrtime' ||

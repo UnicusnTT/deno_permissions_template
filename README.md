@@ -56,6 +56,13 @@ The project consists of two main directories:
 5. Define your task in `deno.jsonc`, but replace all allowance/denial flags with `$(deno task getPermissions <your task>)` as you see it in the dev task.
 6. Run `deno task <your task>` to execute it with automated permissions.
 
+## Determining what permissions to give
+1. Remove all permissions from `<task>`.
+2. Execute `<task>`.
+3. Note what permissions it requests.
+4. Determine how you want to include them in `permissions/allowed.ts`.
+5. Remember: Using `permissions/denied.ts` as well can sometimes achieve the same with less code! Ex: If only a few files need to be protected but a lot of files in the workig directory need to be accesses, you can specify the protected files in `permissions/denied.ts` and simply use `Deno.cwd()` or `.` in `permissions/allowed.ts`!
+
 ## Contributing
 
 Contributions are welcome! If you have suggestions or improvements, feel free to open an issue or submit a pull request.

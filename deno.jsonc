@@ -6,6 +6,7 @@
 		They enable different system-agnostic ways to specify permissions.
 		For example, `${Deno.execPath()}` is permitted by --allow-read.
 		`${Deno.env.get("LOCALAPPDATA")}` is permitted by --allow-env.
+		This is all they are used for here and they are not used by default.
 		*/
 		"getPermissions": "deno run --allow-read --allow-env permissions/getPermissions.ts",
 		/*
