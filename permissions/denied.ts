@@ -4,8 +4,6 @@ import { PermissionEnum } from './permissionEnum.ts';
 //Use this for your task,
 //Unless you have a good reason not to!
 const defaultDenials: Partial<Record<PermissionEnum, string[]>> = {
-	//If you need to make an exception for a task,
-    //You can use object inheritance.
     //To not deny write to deno.json:
     /* 
         <task>: {
@@ -20,6 +18,16 @@ const defaultDenials: Partial<Record<PermissionEnum, string[]>> = {
         <task>: {
             ...defaultDenials,
             [PermissionEnum.Read]: undefined,
+        }
+    */
+   //To add more read denials:
+    /* 
+        <task>: {
+            ...defaultDenials,
+            [PermissionEnum.Read]: [
+				'many strings',
+				'to your files',
+			],
         }
     */
     [PermissionEnum.Read]: [
