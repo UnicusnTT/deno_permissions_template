@@ -2,8 +2,12 @@
 	"tasks": {
 		/*
 		@getPermissions requires an argument in the style seen in task 'dev'.
+		It requires --allow-read and --allow-env.
+		They enable different system-agnostic ways to specify permissions.
+		For example, `${Deno.execPath()}` is permitted by --allow-read.
+		`${Deno.env.get("LOCALAPPDATA")}` is permitted by --allow-env.
 		*/
-		"getPermissions": "deno run --allow-read permissions/getPermissions.ts",
+		"getPermissions": "deno run --allow-read --allow-env permissions/getPermissions.ts",
 		/*
     	@dev watches and runs src/main.ts,
 		default getPermissions dev allows:
